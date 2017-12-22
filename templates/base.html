@@ -1,0 +1,275 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{% block title %}Base {% endblock %}</title>
+
+    {% include 'defaults/head.html' %}
+
+</head>
+<body>
+{% block menu %}
+<br><br><br>
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                     <a class="nav-link" href="#">Home</a>
+                </li>
+                    <ul class="nav-item btn-group">
+                        <li class="nav-item success">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspoppup="true" aria-expanded="false">
+                            선수
+                        </a>
+                            <div class="dropdown-menu" aira-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">이적링크</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="nav-item dropdown">
+                        <li class="nav-item success">
+                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspoppup="true" aria-expanded="false">
+                             팀
+                             </a>
+                    <div class="dropdown-menu" aria-labelleby="navbarDropdown">
+                        <a class="dropdown-item" href="#">순위</a>
+                        <a class="dropdown-item" href="#">전술</a>
+                        <a class="dropdown-item" href="#">이적소식</a>
+                        <a class="dropdown-item" href="#">구장</a>
+                        <a class="dropdown-item" href="#"></a>
+                </div>
+                        </li>
+                    </ul>
+                    <ul class="nav-item dropdown">
+                        <li class="nav-item success">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspoppup="true" aria-expanded="false">
+                                게시글
+                            </a>
+                    <div class="dropdown-menu" aria-labelleby="navbarDropdown">
+                        <a class="dropdown-item" href="#">칼럼</a>
+                        <a class="dropdown-item" href="#">개인칼럼</a>
+                        <a class="dropdown-item" href="#">사진 업로드</a>
+                        <a class="dropdown-item" href="#">동영상 업로드</a>
+                        <a class="dropdown-item" href="#">개인 게시글</a>
+                </div>
+                        </li>
+                </ul>
+                <ul class="nav-item dropdown">
+                        <li class="nav-item success">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspoppup="true" aria-expanded="false">
+                                뉴스
+                            </a>
+                    <div class="dropdown-menu" aria-labelleby="navbarDropdown">
+                        <a class="dropdown-item" href="#">최신뉴스</a>
+                        <a class="dropdown-item" href="#">주요뉴스</a>
+                        <a class="dropdown-item" href="#">외신 번역</a>
+                        <a class="dropdown-item" href="#">주요선수소식</a>
+                </div>
+                        </li>
+                </ul>
+                <ul class="nav-item dropdown">
+                        <li class="nav-item success">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspoppup="true" aria-expanded="false">
+                                게임
+                            </a>
+                    <div class="dropdown-menu" aria-labelleby="navbarDropdown">
+                        <a class="dropdown-item" href="#">피파</a>
+                        <a class="dropdown-item" href="#">위닝 일레븐</a>
+                        <a class="dropdown-item" href="#">풋볼 매니저</a>
+                </div>
+                        </li>
+                </ul>
+                {% block login %}
+                    <ul class="nav-item text-right">
+                        {% if user.is_active %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'password_change' %}">비밀번호 변경</a>
+                            </li>
+                    </ul>
+                    <ul class="nav-item text-right">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}">로그아웃</a>
+                            </li>
+                    </ul>
+                    <ul class="nav-item text-right">
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">로그인</a>
+                            </li>
+                    </ul>
+                    <ul class="nav-item text-right">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}">회원가입</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endblock %}
+            </ul>
+        </div>
+    </nav>
+</header>
+
+{% endblock %}
+<!-- 화면 중앙 -->
+<div class="container-fluid col-md">
+    <div class="row">
+        <div class="col-md-2">
+            {% block sidebar %}
+               <ul style="list-style:none">
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/mancity.jpg' %}">맨시티</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/manu.jpg' %}">맨유</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/chel.jpg' %}">첼시</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/lver.jpg' %}">리버풀</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/asenal.jpg' %}">아스날</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/bern.jpg' %}">번리</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/tot.jpg' %}">토트넘</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/lester.jpg' %}">레스터</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/ever.jpg' %}">에버턴</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/what.jpg' %}">왓포드</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/herder.jpg' %}">허더즈필드</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/saus.jpg' %}">사우샘프턴</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/brit.jpg' %}">브라이튼</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/cris.jpg' %}">크리스탈</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/west.jpg' %}">웨스트햄</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/afc.jpg' %}">본머스</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/stoke.jpg' %}">스토크시티</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/new.jpg' %}">뉴캐슬</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/west_bro.jpg' %}">웨스트브롬</a></li>
+                   <li><a href=""><img style="width:20px;height:15px;"src="{% static 'img/logo/swange.jpg' %}">스완지</a></li>
+               </ul>
+        </div>
+            {% endblock %}
+            <div class="col-md-6">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+
+    </div>
+</div>
+<!-- footer -->
+<footer>
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div id="contact-left">
+                        <h3>ITCOOP</h3>
+                        <p>
+                            We belive in <strong>Simple</strong>,
+                            <strong>Clean</strong> & <strong>Modern</strong>
+                            Design Standards with responseive Apporach.
+                            Browse the amazing work of our company.
+                        </p>
+                        <div id="contact-info">
+                            <address>
+                                <strong>Headquarters:</strong><br/>
+                                <p>
+                                    221 jockkey Hollow, Suite 600<br>
+                                    Smithtown, NY 11879
+                                </p>
+                            </address>
+                            <div id="phone-fax-email">
+                                <p>
+                                    <strong>Phone:</strong><span> (91) 8974 5683</span><br/>
+                                    <strong>FAX:</strong><span> (91) 8974 5683</span><br/>
+                                    <strong>Email:</strong><span> info@itcoop.co.kr </span><br/>
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="social-list">
+                                <li>
+                                    <a href="#" class="social-icon icon-white">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-icon icon-white">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-icon icon-white">
+                                        <i class="fa fa-youtube-play"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-icon icon-white">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div id="contact-right">
+                        <h3>Contact Us</h3>
+                        <form action="#">
+                            <input type="text" name="full-name" placeholder="Full Name" class="form-control">
+                            <input type="text" name="email" placeholder="Email" class="form-control">
+                            <textarea rows="5" name="message" placeholder="Message..." class="form-control"></textarea>
+
+                            <div id="send-btn">
+                                <a class="btn btn-lg btn-general btn-white" href="#" role="button">SEND</a>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="footer-copyrights">
+                        <p>Copyrights &copy; 2017 All rights Reserved by ITCOOP Inc.</p>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div id="footer-menu">
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#work">Work</a></li>
+                            <li><a href="#team">Team</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
+                            <li><a href="#pricing">pricing</a></li>
+                            <li><a href="#stats">Stats</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+         {% include 'defaults/scripts.html' %}
+</body>
+</html>
