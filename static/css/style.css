@@ -27,8 +27,8 @@ h3 {
 /*********************************************************************************************
                                        solo
 **********************************************************************************************/
-.navbar {
-    height:7%;
+#top {
+    margin-top:-16px
 }
 .nav-item {
     list-style:none;
@@ -43,6 +43,43 @@ h3 {
     max-width:100%;
     height:auto;
     display:block;
+}
+#main ul li{
+  /*  background-image: url("../img/line.jpg");*/
+    /*background-size: cover;*/
+        line-height:40px;
+}
+#main ul li a{
+        color:white;
+}
+#main ul li img{
+    margin-right:10px;
+}
+#main{
+    background-image: url("../img/line1.jpg");
+    background-size: cover;
+    img-text:center
+
+}
+.a1 {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.login {
+    margin-top:100px;
+    margin-left:200px;
+}
+
+#carouselExampleIndicators{
+    width:50%;
+    height: 120%;
+}
+#carouselExampleIndicators1 {
+    background-image: url("../img/ball.jpg") ;
+    background-size: cover;
+    padding-top:60%;
+
 }
 
 /**********************************************
@@ -300,7 +337,10 @@ h4.team-member-designation {
                                  testimonials
 **********************************************************************************/
 #testimonials-cover {
-    background-image : url("../img/bg-testimonials.jpg");
+    background-image : url("../img/ball.jpg");
+/*    background-size : cover;*/
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 #testimonials .content-box {

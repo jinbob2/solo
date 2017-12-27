@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url , include
 from django.contrib import admin
-from .views import Home , Bord
+from .views import Home
 from .views import UsercreateView , UserCreateDoneView
+
+from django.conf import settings
+from django.conf.urls.static import url,static
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', Home.as_view()),
-    url(r'^bord/$', Bord.as_view() ),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/register/$', UsercreateView.as_view(), name='register'),
     url(r'^accounts/register/done', UserCreateDoneView.as_view(), name='register_done' ),
+    url(r'^bord/', include('bord.urls', namespace='bord')),
 ]
