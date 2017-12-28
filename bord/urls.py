@@ -1,6 +1,4 @@
 from django.conf.urls import url
-from django.conf import settings
-from django.conf.urls.static import url,static
 
 from .views import (
     BordListView,
@@ -11,9 +9,9 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r'^$', BordListView.as_view(), name='list'),
-    url(r'^(?P<pk>\d+)/$', BordDetailView.as_view, name='detail'),
-    url(r'^create/$', BordCreateView.as_view(), name='create'),
-    url(r'^(?P<pk>\d+)/update/$', BordUpdateView.as_view(), name='update'),
-    url(r'^(?P<pk>\d+)/delete/$', BordDeleteView.as_view(), name='delete'),
+    url(r'^check/(?P<check>\d+)/$', BordListView.as_view(), name='list'),
+    url(r'^(?P<pk>\d+)/$',BordDetailView.as_view(), name='detail'),
+    url(r'^create/(?P<check>\d+)/$',BordCreateView.as_view(), name='create'),
+    url(r'^update/(?P<pk>\d+)/$',BordUpdateView.as_view(), name='update'),
+    url(r'^delete/(?P<pk>\d+)/$',BordDeleteView.as_view(), name='delete'),
 ]

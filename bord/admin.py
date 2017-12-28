@@ -4,6 +4,6 @@ from .models import Bord
 # Register your models here.
 
 class BordAdmin(admin.ModelAdmin):
-    list_display = ('title','timestamp')
+    list_display = ('title','user','check','timestamp')
 
 admin.site.register(Bord, BordAdmin)

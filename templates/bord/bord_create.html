@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h2 class="text-center">Board {{ check }}</h2>
 
-<h2>게시글 작성</h2>
 {% if form.errors %}
   {{ form.errors }}
 {% endif %}
+
 <div class="container">
     <div class="row">
         <div class="col-md-10">
 
             <form method="POST" enctype="multipart/form-data" action=".">{% csrf_token %}
+              <input type="hidden" name="check" value="{{check}}" >
               <div class="form-group row">
                 <label for="id_title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-8">
@@ -20,19 +22,25 @@
               <div class="form-group row">
                 <label for="id_image" class="col-sm-2 col-form-label">Image</label>
                 <div class="col-sm-6">
-                  <input type="file" id="id_image" name="image">
+                  <input type="file" id="id_image" name="image" >
                 </div>
               </div>
               <div class="form-group row">
                 <label for="id_description" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-8">
-                  <textarea class="bord-control" rows="3" id="id_description" name="description"></textarea>
+                  <textarea class="form-control" rows="3" id="id_description" name="description"></textarea>
+                </div>
+              </div>
+                    <div class="form-group row">
+                <label for="id_embed_code" class="col-sm-2 col-form-label">영상 링크</label>
+                <div class="col-sm-8">
+                  <textarea class="form-control" rows="3" id="id_embed_code" name="embed_code"></textarea>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-8 text-center">
-                  <button type="submit" class="btn btn-primary">Update</button>
-                  <a href="{% url 'bord:list' %}" class="btn btn-secondary" role="button">Board</a>
+                  <button type="submit" class="btn btn-primary">Add</button>
+                  <a href="{% url 'bord:list' check %}" class="btn btn-secondary" role="button">List</a>
                 </div>
               </div>
             </form>

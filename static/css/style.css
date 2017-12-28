@@ -34,7 +34,7 @@ h3 {
     list-style:none;
 }
 .right {
-        text: right;
+        text-align : right;
 }
 .p-2{
     list-style:none;
@@ -80,6 +80,9 @@ h3 {
     background-size: cover;
     padding-top:60%;
 
+}
+textarea {
+    width : 500px;
 }
 
 /**********************************************
@@ -508,12 +511,12 @@ form {
 form .form-control {
     background: transparent;
     border-radius : 0;
-    border-color: #fff;
+    /*border-color: #fff;*/
     font-size: 17px;
     font-weight: 300;
     padding: 8px 16px ;
     margin-bottom: 20px;
-    color : #fff;
+/*    color : #fff;*/
 }
 /*************************************************************************
                             footer bottom

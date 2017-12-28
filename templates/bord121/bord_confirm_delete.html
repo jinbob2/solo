@@ -11,7 +11,7 @@
         <p class="h2">죵말 삭제하시겠습니깕?</p>
         <br><br>
         <button type="submit" class="btn btn-danger">Delete</button>
-        <a href="{% url 'bord-detail' object.id %}" class="btn btn-secondary" role="button">Cancel</a>
+        <a href="{% url 'bord:detail' object.id %}" class="btn btn-secondary" role="button">Cancel</a>
     </form>
 
 {% endblock %}

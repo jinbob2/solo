@@ -3,7 +3,6 @@ from django import forms
 from .models import Bord
 
 class BordForm(forms.ModelForm):
-    class meta:
+    class Meta:
         model = Bord
-        fields = ['title','image','embed_code','description','check']
-
+        fields = [ 'check','title','image','description','embed_code']

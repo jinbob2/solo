@@ -29,4 +29,8 @@ urlpatterns = [
     url(r'^accounts/register/$', UsercreateView.as_view(), name='register'),
     url(r'^accounts/register/done', UserCreateDoneView.as_view(), name='register_done' ),
     url(r'^bord/', include('bord.urls', namespace='bord')),
+
 ]
+
+if settings.DEBUG :
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

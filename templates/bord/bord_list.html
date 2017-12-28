@@ -1,55 +1,112 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 
 {% block content %}
+
+<h2 class="text-center">
+    {% if check == "1" %} 맨시티
+    {% elif check == "2" %} 맨유
+    {% elif check == "3" %} 첼시
+    {% elif check == "4" %} 리버풀
+    {% elif check == "5" %} 아스날
+    {% elif check == "6" %} 번리
+    {% elif check == "7" %} 토트넘
+    {% elif check == "8" %} 레스터
+    {% elif check == "9" %} 에버턴
+    {% elif check == "10" %} 왓포드
+    {% elif check == "11" %} 허더즈필드
+    {% elif check == "12" %} 사우스샘프턴
+    {% elif check == "13" %} 브라이튼
+    {% elif check == "14" %} 크리스탈
+    {% elif check == "15" %} 웨스트햄
+    {% elif check == "16" %} 본머스
+    {% elif check == "17" %} 스토크시티
+    {% elif check == "18" %} 뉴캐슬
+    {% elif check == "19" %} 웨스트브롬
+    {% elif check == "20" %} 스완지
+    {% endif %}
+
+</h2>
+
 <div class="container">
-  <div class="row">
-    <div class="col-12">
+    <div class="row">
+        <div class="col-md-12">
 
-      <br>
-
-<br><br>
-
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <!--<th scope="col" class="text-center">비디오 1</th>-->
-      <!--<th scope="col" class="text-center">비디오 2</th>-->
-      <!--<th scope="col" class="text-center">비디오 3</th>-->
-      <th colspan="4" scope="col" class="text-center">
-          총 비디오 {{all_count}}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-
-    {% for object in object_list %}
-
-            <tr>
-              <!--{{object.embed_code|safe}} <br>-->
-                <td><a href="{% url 'bord:detail' object.id %}">{{object.title}}</a></td>
-                <td>{{object.timestamp|date:"Y-m-d (H:i:s)[f:s]" }}</td>
-                <td><a href="{% url 'bord:update' object.id %}" class="btn btn-primary" role="button">Update</a></td>
-                <td><a href="{% url 'bord:delete' object.id %}" class="btn btn-danger" role="button">Delete</a></td>
-            </tr>
-
-    {% endfor %}
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in object_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter}}</th>
+                        <td><a href="{{ item.get_absolute_url }}">{{ item.title}}</a></td>
+                        <td><img class="img-fluid img-thumbnail" src="{{item.image.url}}" width="100px" height="100px"> </td>
+                        <td>{{ item.user.username }}</td>
+                        <td>{{ item.timestamp|date:"Y-m-d" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <a href="{% url 'bord:create' %}" class="btn btn-primary" role="button">비디오 생성</a>
+    {% if user.is_active %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+              <a href="{% url 'bord:create' check %}" class="btn btn-primary" role="button">Add</a>
+        </div>
     </div>
-  </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+<!--
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a href="/bord?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    <span class="page-current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="/bord?page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+
+ -->
+  {% if is_paginated %}
+            <div class="pagination">
+                <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a href="/board/check/{{check}}/?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    <span class="page-current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="/board/check/{{check}}/?page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+
+
+
+
+        </div>
+    </div>
+
+
 </div>
-{% endblock %}}
+
+{% endblock %}
+
