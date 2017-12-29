@@ -21,7 +21,6 @@ from .views import UsercreateView , UserCreateDoneView
 from django.conf import settings
 from django.conf.urls.static import url,static
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', Home.as_view()),
@@ -29,6 +28,7 @@ urlpatterns = [
     url(r'^accounts/register/$', UsercreateView.as_view(), name='register'),
     url(r'^accounts/register/done', UserCreateDoneView.as_view(), name='register_done' ),
     url(r'^bord/', include('bord.urls', namespace='bord')),
+    url(r'^contact/', include('contact.urls', namespace='contact')),
 
 ]
 

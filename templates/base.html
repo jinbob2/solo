@@ -222,14 +222,20 @@
 
                 <div class="col-md-6">
                     <div id="contact-right">
+
                         <h3>Contact Us</h3>
-                        <form action="#">
-                            <input type="text" name="full-name" placeholder="Full Name" class="form-control">
-                            <input type="text" name="email" placeholder="Email" class="form-control">
+                        {%if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                        {{ form.errors }}
+                            </div>
+                        {% endif %}
+                        <form method="post" action="/contact/create/">{% csrf_token %}
+                            <input type="text" name="name" placeholder="Full Name" class="form-control" required>
+                            <input type="email" name="email" placeholder="Email" class="form-control" required>
                             <textarea rows="5" name="message" placeholder="Message..." class="form-control"></textarea>
 
                             <div id="send-btn">
-                                <a class="btn btn-lg btn-general btn-white" href="#" role="button">SEND</a>
+                                <button type="submit" class="btn btn-lg btn-general">SEND</button>
                             </div>
 
                         </form>
@@ -255,7 +261,7 @@
 
                     <div id="footer-menu">
                         <ul>
-                            <li><a href="#home">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li><a href="#services">선수</a></li>
                             <li><a href="#work">팀</a></li>
                             <li><a href="#team">게시글</a></li>
